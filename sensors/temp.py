@@ -8,7 +8,7 @@ import csv, time, sys
 # import Adafruit_BME280 as BME280
 from sensors.ada_fruit import BME280
 
-OPATH = Path('home','pi','data','temp_humidty_baro.csv')
+OPATH = Path('/home','pi','pi_projecs','data','temp_humidty_baro.csv')
 
 def write_csv(data,opath=OPATH):
     try:
@@ -16,7 +16,8 @@ def write_csv(data,opath=OPATH):
             w = csv.writer(f)
             w.writerow(data)
         f.close()
-    except IOError:
+    except Exception as e:
+        print(e)
         time.sleep(5)
         write_csv(data, opath)
     return
