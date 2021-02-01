@@ -3,12 +3,10 @@
 
 from pathlib import Path
 import RPi.GPIO as GPIO
-import csv, time, sys
-# from os import path
-# import Adafruit_BME280 as BME280
+import csv, time
 from sensors.ada_fruit import BME280
 
-OPATH = Path('/home','pi','pi_projecs','data','temp_humidty_baro.csv')
+OPATH = Path('/home','pi','pi_projects','data','temp_humidty_baro.csv')
 
 def write_csv(data,opath=OPATH):
     try:
@@ -29,7 +27,7 @@ def main(sensor):
         pres_list = []
         humid_list = []
 
-        t_end = time.time() + 30
+        t_end = time.time() + 300 
         while time.time() < t_end:
             temp_list.append(sensor.read_temperature())
             pres_list.append(sensor.read_pressure() / 100)
@@ -40,6 +38,7 @@ def main(sensor):
                 sum(pres_list) * 1.0 / len(pres_list),
                 sum(humid_list) * 1.0 / len(humid_list))
 
+        time.sleep(30)
         write_csv(data)
     return
 
