@@ -1,0 +1,5 @@
+*.python-version
+*.egg-info/
+venv/
+*.idea/
+data/

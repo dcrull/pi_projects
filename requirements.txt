@@ -1,4 +1,7 @@
 pathlib
-RPi.GPIO
+# RPi.GPIO
+sklearn
+ipython
+pandas
 
 -e .
